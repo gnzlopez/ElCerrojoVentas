@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="ElCerrojoPresentation/ElCerrojoPresentation.csproj" />
+  <Project Path="ElCerrojoServices/ElCerrojoServices.csproj" />
+  <Project Path="ElCerrojoRepository/ElCerrojoRepository.csproj" />
+</Solution>
