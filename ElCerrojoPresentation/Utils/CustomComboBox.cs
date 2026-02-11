@@ -16,7 +16,7 @@ namespace ElCerrojoPresentation.Utils
                 combo.Items.AddRange(items);
                 combo.DisplayMember = "Text";
                 combo.ValueMember = "Value";
-                combo.SelectedIndex = 0;
+                //combo.SelectedIndex = 0;
             }
         }
 

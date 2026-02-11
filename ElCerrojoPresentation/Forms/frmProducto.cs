@@ -78,12 +78,23 @@ namespace ElCerrojoPresentation.Forms
             }).ToList();
 
             dgvProductList.DataSource = listVM;
+            
+            //
+            dgvProductList.ImplementConfigTwoBtn(); ;
 
+            // Configs de columnas
             dgvProductList.Columns["Id"].Visible = false;
             dgvProductList.Columns["CategoryId"].Visible = false;
             dgvProductList.Columns["BrandId"].Visible = false;
             dgvProductList.Columns["BuyPrice"].Visible = false;
             dgvProductList.Columns["BarCode"].Visible = false;
+
+            dgvProductList.Columns["Stock"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvProductList.Columns["Stock"].Width = 80;
+            dgvProductList.Columns["Price"].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dgvProductList.Columns["Price"].Width = 80;
+            dgvProductList.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgvProductList.Columns["Name"].Width = 250;
 
             PositionHeaderCheckBox();
         }
@@ -112,10 +123,12 @@ namespace ElCerrojoPresentation.Forms
         {
             ShowTab(tabList.Name);
             dgvProductList.Columns.Insert(0, chkCol);
-            dgvProductList.Columns[0].Width = 8;
+            dgvProductList.Columns[0].Width = 20;
+            dgvProductList.Columns[0].MinimumWidth = 20;
+            dgvProductList.Columns[0].Resizable = DataGridViewTriState.False;
+            dgvProductList.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             AddHeaderCheckBox();
-            dgvProductList.DataSource = new List<ProductVM>();
-            dgvProductList.ImplementConfigTwoBtn(); ;
+            //dgvProductList.DataSource = new List<ProductVM>();
 
             var brandsList = await _brandService.GetByText("");
 
