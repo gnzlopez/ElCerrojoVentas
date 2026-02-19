@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace ElCerrojoPresentation.Utils
+namespace ElCerrojoPresentation.Utils.Customs
 {
     public class CustomToolStripRenderer : ToolStripProfessionalRenderer
     {

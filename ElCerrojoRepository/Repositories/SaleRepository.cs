@@ -62,7 +62,9 @@ namespace ElCerrojoRepository.Repositories
                             .Include(s => s.SaleDetails)
                                 .ThenInclude(d => d.Product)
                                 .ThenInclude(p => p.Category)
-                            .Where(x => x.Date >= dateI && x.Date <= dateE)
+                            .Where(x => x.Date >= dateI && x.Date <= dateE &&
+                                   (x.Id.ToString().Contains(search) ||
+                                    x.ClientName.Contains(search)))
                             .ToListAsync();
         }
 

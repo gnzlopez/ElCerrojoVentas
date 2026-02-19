@@ -1,4 +1,5 @@
-﻿using ElCerrojoPresentation.Utils;
+﻿using ElCerrojoPresentation.Controls;
+using ElCerrojoPresentation.Utils;
 
 namespace ElCerrojoPresentation.Forms
 {
@@ -64,13 +65,14 @@ namespace ElCerrojoPresentation.Forms
             // 
             // txbSaleProd
             // 
+            txbSaleProd.BorderStyle = BorderStyle.FixedSingle;
             txbSaleProd.Dock = DockStyle.Fill;
             txbSaleProd.Font = new Font("Segoe UI", 10F);
             txbSaleProd.Location = new Point(0, 0);
             txbSaleProd.Margin = new Padding(5);
             txbSaleProd.Name = "txbSaleProd";
             txbSaleProd.PlaceholderText = "Ingrese el codigo de producto o presione Buscar";
-            txbSaleProd.Size = new Size(382, 25);
+            txbSaleProd.Size = new Size(475, 25);
             txbSaleProd.TabIndex = 4;
             txbSaleProd.KeyDown += txbSaleProd_KeyDown;
             // 
@@ -92,7 +94,7 @@ namespace ElCerrojoPresentation.Forms
             txbSaleClient.Margin = new Padding(5);
             txbSaleClient.Name = "txbSaleClient";
             txbSaleClient.PlaceholderText = "Ingrese el nombre de cliente";
-            txbSaleClient.Size = new Size(481, 25);
+            txbSaleClient.Size = new Size(475, 25);
             txbSaleClient.TabIndex = 6;
             // 
             // lblSaleClient
@@ -107,9 +109,9 @@ namespace ElCerrojoPresentation.Forms
             // 
             // txbSellPay
             // 
-            txbSellPay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            txbSellPay.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             txbSellPay.Font = new Font("Segoe UI", 10F);
-            txbSellPay.Location = new Point(273, 354);
+            txbSellPay.Location = new Point(79, 354);
             txbSellPay.Margin = new Padding(5);
             txbSellPay.Name = "txbSellPay";
             txbSellPay.PlaceholderText = "Monto del pago";
@@ -119,9 +121,9 @@ namespace ElCerrojoPresentation.Forms
             // 
             // lblSalePay
             // 
-            lblSalePay.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lblSalePay.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblSalePay.AutoSize = true;
-            lblSalePay.Location = new Point(203, 359);
+            lblSalePay.Location = new Point(9, 359);
             lblSalePay.Margin = new Padding(5);
             lblSalePay.Name = "lblSalePay";
             lblSalePay.Size = new Size(60, 15);
@@ -130,9 +132,9 @@ namespace ElCerrojoPresentation.Forms
             // 
             // txbSellChange
             // 
-            txbSellChange.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            txbSellChange.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             txbSellChange.Font = new Font("Segoe UI", 10F);
-            txbSellChange.Location = new Point(492, 354);
+            txbSellChange.Location = new Point(298, 354);
             txbSellChange.Margin = new Padding(5);
             txbSellChange.Name = "txbSellChange";
             txbSellChange.ReadOnly = true;
@@ -141,9 +143,9 @@ namespace ElCerrojoPresentation.Forms
             // 
             // lblSellChange
             // 
-            lblSellChange.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            lblSellChange.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblSellChange.AutoSize = true;
-            lblSellChange.Location = new Point(438, 359);
+            lblSellChange.Location = new Point(244, 359);
             lblSellChange.Margin = new Padding(5);
             lblSellChange.Name = "lblSellChange";
             lblSellChange.Size = new Size(44, 15);
@@ -193,6 +195,7 @@ namespace ElCerrojoPresentation.Forms
             btnSearch.Cursor = Cursors.Hand;
             btnSearch.Dock = DockStyle.Fill;
             btnSearch.FlatStyle = FlatStyle.Flat;
+            btnSearch.ForeColor = Color.Black;
             btnSearch.Location = new Point(0, 0);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(95, 25);
@@ -213,13 +216,13 @@ namespace ElCerrojoPresentation.Forms
             // 
             // btnSaleSave
             // 
-            btnSaleSave.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btnSaleSave.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnSaleSave.Cursor = Cursors.Hand;
             btnSaleSave.FlatStyle = FlatStyle.Flat;
             btnSaleSave.ForeColor = Color.FromArgb(30, 90, 195);
-            btnSaleSave.Location = new Point(662, 354);
+            btnSaleSave.Location = new Point(468, 354);
             btnSaleSave.Name = "btnSaleSave";
-            btnSaleSave.Size = new Size(75, 25);
+            btnSaleSave.Size = new Size(269, 25);
             btnSaleSave.TabIndex = 16;
             btnSaleSave.Text = "Registrar";
             btnSaleSave.UseVisualStyleBackColor = true;
@@ -240,8 +243,8 @@ namespace ElCerrojoPresentation.Forms
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(btnSearch);
-            splitContainer1.Size = new Size(481, 25);
-            splitContainer1.SplitterDistance = 382;
+            splitContainer1.Size = new Size(574, 25);
+            splitContainer1.SplitterDistance = 475;
             splitContainer1.TabIndex = 17;
             // 
             // frmVenta
@@ -264,6 +267,7 @@ namespace ElCerrojoPresentation.Forms
             Controls.Add(lblSaleProd);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
+            Location = new Point(10, 0);
             Name = "frmVenta";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmVenta";

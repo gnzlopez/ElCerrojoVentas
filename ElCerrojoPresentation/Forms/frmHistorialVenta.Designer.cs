@@ -119,9 +119,9 @@
             btnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSearch.Cursor = Cursors.Hand;
             btnSearch.FlatStyle = FlatStyle.Flat;
-            btnSearch.Location = new Point(670, 72);
+            btnSearch.Location = new Point(670, 70);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(75, 23);
+            btnSearch.Size = new Size(75, 25);
             btnSearch.TabIndex = 15;
             btnSearch.Text = "Buscar";
             btnSearch.UseVisualStyleBackColor = true;

@@ -55,7 +55,7 @@
             btnExcel.FlatStyle = FlatStyle.Flat;
             btnExcel.Location = new Point(665, 70);
             btnExcel.Name = "btnExcel";
-            btnExcel.Size = new Size(75, 23);
+            btnExcel.Size = new Size(75, 25);
             btnExcel.TabIndex = 24;
             btnExcel.Text = "Excel";
             btnExcel.UseVisualStyleBackColor = true;
@@ -122,7 +122,7 @@
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.Location = new Point(438, 70);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(75, 23);
+            btnSearch.Size = new Size(75, 25);
             btnSearch.TabIndex = 26;
             btnSearch.Text = "Buscar";
             btnSearch.UseVisualStyleBackColor = true;

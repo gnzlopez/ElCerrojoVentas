@@ -1,4 +1,4 @@
-﻿namespace ElCerrojoPresentation.Utils
+﻿namespace ElCerrojoPresentation.Utils.Customs
 {
     public static class CustomDataGridView
     {
@@ -61,6 +61,11 @@
         public static void ImplementConfigTwoBtn(this DataGridView datagrid)
         {
             ImplementConfig(datagrid);
+
+            if (datagrid.Columns.Contains(ActionNameEdit)) 
+            {
+                return;
+            }
 
             var btnEdit = new DataGridViewButtonColumn();
             btnEdit.Text = "";

@@ -196,15 +196,16 @@ namespace ElCerrojoPresentation.Forms
             // cboListBrand
             // 
             cboListBrand.Dock = DockStyle.Fill;
+            cboListBrand.DrawMode = DrawMode.OwnerDrawFixed;
             cboListBrand.DropDownStyle = ComboBoxStyle.DropDownList;
             cboListBrand.Font = new Font("Segoe UI", 10F);
             cboListBrand.FormattingEnabled = true;
             cboListBrand.Location = new Point(0, 0);
             cboListBrand.Margin = new Padding(5);
             cboListBrand.Name = "cboListBrand";
-            cboListBrand.Size = new Size(354, 25);
+            cboListBrand.Size = new Size(354, 26);
             cboListBrand.TabIndex = 7;
-            cboListBrand.DrawItem += cboNewBrand_DrawItem;
+            cboListBrand.DrawItem += cboListBrand_DrawItem;
             cboListBrand.SelectedIndexChanged += cboListBrand_SelectedIndexChanged;
             // 
             // cboListCateg
@@ -375,10 +376,10 @@ namespace ElCerrojoPresentation.Forms
             // txbNewCode
             // 
             txbNewCode.Font = new Font("Segoe UI", 10F);
-            txbNewCode.Location = new Point(11, 243);
+            txbNewCode.Location = new Point(8, 243);
             txbNewCode.Margin = new Padding(5);
             txbNewCode.Name = "txbNewCode";
-            txbNewCode.Size = new Size(453, 25);
+            txbNewCode.Size = new Size(456, 25);
             txbNewCode.TabIndex = 11;
             // 
             // lblNewCode
@@ -578,10 +579,10 @@ namespace ElCerrojoPresentation.Forms
             // txbEditCode
             // 
             txbEditCode.Font = new Font("Segoe UI", 10F);
-            txbEditCode.Location = new Point(11, 243);
+            txbEditCode.Location = new Point(8, 243);
             txbEditCode.Margin = new Padding(5);
             txbEditCode.Name = "txbEditCode";
-            txbEditCode.Size = new Size(453, 25);
+            txbEditCode.Size = new Size(456, 25);
             txbEditCode.TabIndex = 11;
             // 
             // lblEditCode

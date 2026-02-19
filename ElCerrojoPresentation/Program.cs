@@ -1,5 +1,6 @@
 using AutoMapper;
 using ElCerrojoPresentation.Forms;
+using ElCerrojoPresentation.Utils;
 using ElCerrojoRepository.DB;
 using ElCerrojoRepository.Interfaces;
 using ElCerrojoRepository.Repositories;
@@ -26,6 +27,10 @@ namespace ElCerrojoPresentation
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Fuente global
+            Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
+            Application.SetDefaultFont(UiTheme.GetAppFont());
 
             ApplicationConfiguration.Initialize();
 

@@ -3,7 +3,7 @@ using System.Windows.Forms.VisualStyles;
 using static System.Windows.Forms.AxHost;
 using Color = System.Drawing.Color;
 
-namespace ElCerrojoPresentation.Utils
+namespace ElCerrojoPresentation.Utils.Customs
 {
     public class TwoButtonsColumn : DataGridViewColumn
     {

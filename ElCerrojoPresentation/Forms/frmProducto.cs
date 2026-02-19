@@ -1,4 +1,5 @@
 ﻿using ElCerrojoPresentation.Utils;
+using ElCerrojoPresentation.Utils.Customs;
 using ElCerrojoPresentation.Utils.Objects;
 using ElCerrojoPresentation.ViewModels;
 using ElCerrojoServices.DTOs;
@@ -15,6 +16,7 @@ namespace ElCerrojoPresentation.Forms
         private IProductService _productService;
         private IBrandService _brandService;
         private ICategoryService _categoryService;
+        private ProductVM selectedProd;
 
         public frmProducto(IProductService productService, IBrandService brandService, ICategoryService categoryService)
         {
@@ -78,7 +80,7 @@ namespace ElCerrojoPresentation.Forms
             }).ToList();
 
             dgvProductList.DataSource = listVM;
-            
+
             //
             dgvProductList.ImplementConfigTwoBtn(); ;
 
@@ -214,7 +216,7 @@ namespace ElCerrojoPresentation.Forms
         private async void dgvProductList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var actionName = dgvProductList.Columns[e.ColumnIndex].Name;
-            var selectedProd = (ProductVM)dgvProductList.CurrentRow.DataBoundItem;
+            selectedProd = (ProductVM)dgvProductList.CurrentRow.DataBoundItem;
 
             if (actionName == CustomDataGridView.ActionNameEdit)
             {
@@ -269,8 +271,6 @@ namespace ElCerrojoPresentation.Forms
                 MessageBox.Show("Debe ingresar un nombre de Producto");
                 return;
             }
-
-            var selectedProd = (ProductVM)dgvProductList.CurrentRow.DataBoundItem;
 
             var brandId = ((ComboOption)cboEditBrand.SelectedItem!).Value;
             var categId = ((ComboOption)cboEditCateg.SelectedItem!).Value;
@@ -453,6 +453,31 @@ namespace ElCerrojoPresentation.Forms
         {
             dgvProductList.ClearSelection();
             dgvProductList.CurrentCell = null;
+        }
+
+        private void cboListBrand_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            if (e.Index < 0) return;
+
+            var cb = (ComboBox)sender!;
+            bool selected = (e.State & DrawItemState.Selected) == DrawItemState.Selected;
+
+            var back = selected ? ColorTranslator.FromHtml(Util.resColor) : cb.BackColor; // tu "primary"
+            var fore = selected ? Color.White : cb.ForeColor;
+
+            using var b = new SolidBrush(back);
+            e.Graphics.FillRectangle(b, e.Bounds);
+
+            TextRenderer.DrawText(
+                e.Graphics,
+                cb.GetItemText(cb.Items[e.Index]),
+                cb.Font,
+                e.Bounds,
+                fore,
+                TextFormatFlags.Left | TextFormatFlags.VerticalCenter);
+
+            e.DrawFocusRectangle();
         }
     }
 }

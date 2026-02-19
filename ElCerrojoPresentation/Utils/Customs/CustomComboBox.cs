@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ElCerrojoPresentation.Utils
+namespace ElCerrojoPresentation.Utils.Customs
 {
     public static class CustomComboBox
     {

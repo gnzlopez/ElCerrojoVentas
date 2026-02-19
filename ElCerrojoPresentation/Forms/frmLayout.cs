@@ -1,5 +1,7 @@
 ﻿using ElCerrojoPresentation.Utils;
+using ElCerrojoPresentation.Utils.Customs;
 using Microsoft.Extensions.DependencyInjection;
+using static ElCerrojoPresentation.Utils.UiTheme;
 
 namespace ElCerrojoPresentation.Forms
 {
@@ -29,6 +31,8 @@ namespace ElCerrojoPresentation.Forms
 
             pnlMain.Controls.Add(newForm);
             newForm.Show();
+
+            UiPolish.ApplyStandardSpacing(this);
         }
 
         private void frmLayout_Load(object sender, EventArgs e)
@@ -36,8 +40,6 @@ namespace ElCerrojoPresentation.Forms
             msMenu.Renderer = new CustomToolStripRenderer();
 
             var menues = new ToolStripMenuItem[] { mnSales, mnProducts, mnCateg, mnHisto, mnReports, mnConfig };
-
-
         }
 
         private void mnSales_Click(object sender, EventArgs e)
