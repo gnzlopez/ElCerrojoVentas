@@ -9,7 +9,7 @@ namespace ElCerrojoServices.Interfaces
         Task Delete(int id);
         Task<List<ProductDto>> GetAll();
         Task<ProductDto?> GetByCode(string code);
-        Task<List<ProductDto>> GetByText(string searchText, int? brandId = null, int? categId = null);
+        Task<List<ProductDto>> GetByText(string searchText, int? brandId = null, int? categId = null, int? suppId = null);
         Task AddList(List<ProductDto> dtoList, IProgress<int>? progress = null);
         Task ImportExcel(List<ProductDto> dto);
         Task UpdatePrices(IReadOnlyCollection<int> ids, bool isIncrease, decimal multiplier);

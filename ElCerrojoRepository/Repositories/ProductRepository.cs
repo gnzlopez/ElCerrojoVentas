@@ -63,19 +63,23 @@ namespace ElCerrojoRepository.Repositories
             return _context.Products
                             .Include(p => p.Category)
                             .Include(p => p.Brand)
+                            .Include(p => p.Supplier)
                             .FirstOrDefaultAsync(x => x.BarCode == productCode);
         }
 
-        public Task<List<Product>> GetByText(string searchText, int? brandId = null, int? categId = null)
+        public Task<List<Product>> GetByText(string searchText, int? brandId = null, int? categId = null, int? suppId = null)
         {
             return _context.Products
                             .Include(p => p.Category)
                             .Include(p => p.Brand)
+                            .Include(p => p.Supplier)
                             .Where(x => (x.Name.ToUpper().Contains(searchText.ToUpper())
                                      || x.Category.Name.ToUpper().Contains(searchText.ToUpper())
-                                     || x.Brand.Name.ToUpper().Contains(searchText.ToUpper()))
+                                     || x.Brand.Name.ToUpper().Contains(searchText.ToUpper())
+                                     || x.Supplier.Name.ToUpper().Contains(searchText.ToUpper()))
                                      && (categId == null || categId == 0 || x.CategoryId == categId)
-                                     && (brandId == null || brandId == 0 || x.BrandId == brandId))
+                                     && (brandId == null || brandId == 0 || x.BrandId == brandId)
+                                     && (suppId == null || suppId == 0 || x.SupplierId == suppId))
                             .AsNoTracking().ToListAsync();
         }
 

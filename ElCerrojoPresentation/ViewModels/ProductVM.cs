@@ -21,6 +21,9 @@ namespace ElCerrojoPresentation.ViewModels
         [DisplayName("Marca")]
         public string BrandName { get; set; } = "";
 
+        [DisplayName("Proveedor")]
+        public string SupplierName { get; set; } = "";
+
         [DisplayName("Precio")]
         public decimal Price { get; set; }
 
@@ -35,5 +38,6 @@ namespace ElCerrojoPresentation.ViewModels
 
         public int CategoryId { get; set; }
         public int BrandId { get; set; }
+        public int SupplierId { get; set; }
     }
 }

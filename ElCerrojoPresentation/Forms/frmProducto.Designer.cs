@@ -39,17 +39,24 @@ namespace ElCerrojoPresentation.Forms
             tableLayoutPanel1 = new TableLayoutPanel();
             tabControlMain = new TabControl();
             tabList = new TabPage();
+            splitContainer3 = new SplitContainer();
+            splitContainer4 = new SplitContainer();
+            label6 = new Label();
+            label5 = new Label();
+            label7 = new Label();
+            splitContainer2 = new SplitContainer();
             splitContainer1 = new SplitContainer();
             cboListBrand = new ComboBox();
             cboListCateg = new ComboBox();
+            cboListSupp = new ComboBox();
             btnUpdatePrices = new Button();
-            label5 = new Label();
-            label6 = new Label();
             dgvProductList = new DataGridView();
             btnSearch = new Button();
             txbSearch = new TextBox();
             btnNew = new Button();
             tabNew = new TabPage();
+            cboNewSupp = new ComboBox();
+            label8 = new Label();
             cboNewCateg = new ComboBox();
             label3 = new Label();
             numNewStock = new NumericUpDown();
@@ -67,6 +74,8 @@ namespace ElCerrojoPresentation.Forms
             txbNewName = new TextBox();
             lblNewName = new Label();
             tabEdit = new TabPage();
+            cboEditSupp = new ComboBox();
+            label9 = new Label();
             cboEditCateg = new ComboBox();
             label4 = new Label();
             numEditStock = new NumericUpDown();
@@ -85,6 +94,18 @@ namespace ElCerrojoPresentation.Forms
             lblEditName = new Label();
             tabControlMain.SuspendLayout();
             tabList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).BeginInit();
+            splitContainer3.Panel1.SuspendLayout();
+            splitContainer3.Panel2.SuspendLayout();
+            splitContainer3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer4).BeginInit();
+            splitContainer4.Panel1.SuspendLayout();
+            splitContainer4.Panel2.SuspendLayout();
+            splitContainer4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
+            splitContainer2.Panel1.SuspendLayout();
+            splitContainer2.Panel2.SuspendLayout();
+            splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -160,10 +181,9 @@ namespace ElCerrojoPresentation.Forms
             // 
             // tabList
             // 
-            tabList.Controls.Add(splitContainer1);
+            tabList.Controls.Add(splitContainer3);
+            tabList.Controls.Add(splitContainer2);
             tabList.Controls.Add(btnUpdatePrices);
-            tabList.Controls.Add(label5);
-            tabList.Controls.Add(label6);
             tabList.Controls.Add(dgvProductList);
             tabList.Controls.Add(btnSearch);
             tabList.Controls.Add(txbSearch);
@@ -176,9 +196,94 @@ namespace ElCerrojoPresentation.Forms
             tabList.Text = "Lista";
             tabList.UseVisualStyleBackColor = true;
             // 
+            // splitContainer3
+            // 
+            splitContainer3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            splitContainer3.Location = new Point(8, 35);
+            splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            splitContainer3.Panel1.Controls.Add(splitContainer4);
+            // 
+            // splitContainer3.Panel2
+            // 
+            splitContainer3.Panel2.Controls.Add(label7);
+            splitContainer3.Size = new Size(720, 16);
+            splitContainer3.SplitterDistance = 349;
+            splitContainer3.TabIndex = 15;
+            // 
+            // splitContainer4
+            // 
+            splitContainer4.Dock = DockStyle.Fill;
+            splitContainer4.Location = new Point(0, 0);
+            splitContainer4.Name = "splitContainer4";
+            // 
+            // splitContainer4.Panel1
+            // 
+            splitContainer4.Panel1.Controls.Add(label6);
+            // 
+            // splitContainer4.Panel2
+            // 
+            splitContainer4.Panel2.Controls.Add(label5);
+            splitContainer4.Size = new Size(349, 16);
+            splitContainer4.SplitterDistance = 172;
+            splitContainer4.TabIndex = 0;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Dock = DockStyle.Fill;
+            label6.Location = new Point(0, 0);
+            label6.Margin = new Padding(5);
+            label6.Name = "label6";
+            label6.Size = new Size(40, 15);
+            label6.TabIndex = 6;
+            label6.Text = "Marca";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Dock = DockStyle.Fill;
+            label5.Location = new Point(0, 0);
+            label5.Margin = new Padding(5);
+            label5.Name = "label5";
+            label5.Size = new Size(58, 15);
+            label5.TabIndex = 8;
+            label5.Text = "Categoria";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Dock = DockStyle.Fill;
+            label7.Location = new Point(0, 0);
+            label7.Margin = new Padding(5);
+            label7.Name = "label7";
+            label7.Size = new Size(61, 15);
+            label7.TabIndex = 12;
+            label7.Text = "Proveedor";
+            // 
+            // splitContainer2
+            // 
+            splitContainer2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            splitContainer2.Location = new Point(8, 56);
+            splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            splitContainer2.Panel1.Controls.Add(splitContainer1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            splitContainer2.Panel2.Controls.Add(cboListSupp);
+            splitContainer2.Size = new Size(720, 26);
+            splitContainer2.SplitterDistance = 348;
+            splitContainer2.TabIndex = 14;
+            // 
             // splitContainer1
             // 
-            splitContainer1.Location = new Point(8, 55);
+            splitContainer1.Dock = DockStyle.Bottom;
+            splitContainer1.Location = new Point(0, 1);
             splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -188,22 +293,21 @@ namespace ElCerrojoPresentation.Forms
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(cboListCateg);
-            splitContainer1.Size = new Size(715, 27);
-            splitContainer1.SplitterDistance = 354;
+            splitContainer1.Size = new Size(348, 25);
+            splitContainer1.SplitterDistance = 171;
             splitContainer1.TabIndex = 11;
             splitContainer1.Resize += splitContainer1_Resize;
             // 
             // cboListBrand
             // 
             cboListBrand.Dock = DockStyle.Fill;
-            cboListBrand.DrawMode = DrawMode.OwnerDrawFixed;
             cboListBrand.DropDownStyle = ComboBoxStyle.DropDownList;
             cboListBrand.Font = new Font("Segoe UI", 10F);
             cboListBrand.FormattingEnabled = true;
             cboListBrand.Location = new Point(0, 0);
             cboListBrand.Margin = new Padding(5);
             cboListBrand.Name = "cboListBrand";
-            cboListBrand.Size = new Size(354, 26);
+            cboListBrand.Size = new Size(171, 25);
             cboListBrand.TabIndex = 7;
             cboListBrand.DrawItem += cboListBrand_DrawItem;
             cboListBrand.SelectedIndexChanged += cboListBrand_SelectedIndexChanged;
@@ -217,9 +321,22 @@ namespace ElCerrojoPresentation.Forms
             cboListCateg.Location = new Point(0, 0);
             cboListCateg.Margin = new Padding(5);
             cboListCateg.Name = "cboListCateg";
-            cboListCateg.Size = new Size(357, 25);
+            cboListCateg.Size = new Size(173, 25);
             cboListCateg.TabIndex = 9;
             cboListCateg.SelectedIndexChanged += cboListCateg_SelectedIndexChanged;
+            // 
+            // cboListSupp
+            // 
+            cboListSupp.Dock = DockStyle.Bottom;
+            cboListSupp.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboListSupp.Font = new Font("Segoe UI", 10F);
+            cboListSupp.FormattingEnabled = true;
+            cboListSupp.Location = new Point(0, 1);
+            cboListSupp.Margin = new Padding(5);
+            cboListSupp.Name = "cboListSupp";
+            cboListSupp.Size = new Size(368, 25);
+            cboListSupp.TabIndex = 13;
+            cboListSupp.SelectedIndexChanged += cboListProv_SelectedIndexChanged;
             // 
             // btnUpdatePrices
             // 
@@ -234,26 +351,6 @@ namespace ElCerrojoPresentation.Forms
             btnUpdatePrices.UseVisualStyleBackColor = true;
             btnUpdatePrices.Click += btnUpdatePrices_Click;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(366, 38);
-            label5.Margin = new Padding(5);
-            label5.Name = "label5";
-            label5.Size = new Size(58, 15);
-            label5.TabIndex = 8;
-            label5.Text = "Categoria";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(21, 38);
-            label6.Margin = new Padding(5);
-            label6.Name = "label6";
-            label6.Size = new Size(40, 15);
-            label6.TabIndex = 6;
-            label6.Text = "Marca";
-            // 
             // dgvProductList
             // 
             dgvProductList.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -265,6 +362,7 @@ namespace ElCerrojoPresentation.Forms
             dgvProductList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProductList.Size = new Size(720, 193);
             dgvProductList.TabIndex = 3;
+            dgvProductList.CellContentClick += dgvProductList_CellContentClick;
             dgvProductList.CellFormatting += dgvProductList_CellFormatting;
             dgvProductList.CellPainting += dgvProductList_CellPainting;
             dgvProductList.ColumnWidthChanged += dgvProductList_ColumnWidthChanged;
@@ -307,6 +405,8 @@ namespace ElCerrojoPresentation.Forms
             // 
             // tabNew
             // 
+            tabNew.Controls.Add(cboNewSupp);
+            tabNew.Controls.Add(label8);
             tabNew.Controls.Add(cboNewCateg);
             tabNew.Controls.Add(label3);
             tabNew.Controls.Add(numNewStock);
@@ -331,12 +431,33 @@ namespace ElCerrojoPresentation.Forms
             tabNew.Text = "Nuevo";
             tabNew.UseVisualStyleBackColor = true;
             // 
+            // cboNewSupp
+            // 
+            cboNewSupp.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboNewSupp.Font = new Font("Segoe UI", 10F);
+            cboNewSupp.FormattingEnabled = true;
+            cboNewSupp.Location = new Point(8, 92);
+            cboNewSupp.Margin = new Padding(5);
+            cboNewSupp.Name = "cboNewSupp";
+            cboNewSupp.Size = new Size(353, 25);
+            cboNewSupp.TabIndex = 17;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(21, 75);
+            label8.Margin = new Padding(5);
+            label8.Name = "label8";
+            label8.Size = new Size(61, 15);
+            label8.TabIndex = 16;
+            label8.Text = "Proveedor";
+            // 
             // cboNewCateg
             // 
             cboNewCateg.DropDownStyle = ComboBoxStyle.DropDownList;
             cboNewCateg.Font = new Font("Segoe UI", 10F);
             cboNewCateg.FormattingEnabled = true;
-            cboNewCateg.Location = new Point(371, 90);
+            cboNewCateg.Location = new Point(374, 137);
             cboNewCateg.Margin = new Padding(5);
             cboNewCateg.Name = "cboNewCateg";
             cboNewCateg.Size = new Size(353, 25);
@@ -345,7 +466,7 @@ namespace ElCerrojoPresentation.Forms
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(371, 73);
+            label3.Location = new Point(374, 120);
             label3.Margin = new Padding(5);
             label3.Name = "label3";
             label3.Size = new Size(58, 15);
@@ -397,7 +518,7 @@ namespace ElCerrojoPresentation.Forms
             numNewBuyPrice.DecimalPlaces = 2;
             numNewBuyPrice.Font = new Font("Segoe UI", 10F);
             numNewBuyPrice.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
-            numNewBuyPrice.Location = new Point(8, 190);
+            numNewBuyPrice.Location = new Point(264, 189);
             numNewBuyPrice.Margin = new Padding(5);
             numNewBuyPrice.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numNewBuyPrice.Name = "numNewBuyPrice";
@@ -408,7 +529,7 @@ namespace ElCerrojoPresentation.Forms
             // lblNewBuyPrice
             // 
             lblNewBuyPrice.AutoSize = true;
-            lblNewBuyPrice.Location = new Point(21, 173);
+            lblNewBuyPrice.Location = new Point(277, 172);
             lblNewBuyPrice.Margin = new Padding(5);
             lblNewBuyPrice.Name = "lblNewBuyPrice";
             lblNewBuyPrice.Size = new Size(102, 15);
@@ -420,7 +541,7 @@ namespace ElCerrojoPresentation.Forms
             cboNewBrand.DropDownStyle = ComboBoxStyle.DropDownList;
             cboNewBrand.Font = new Font("Segoe UI", 10F);
             cboNewBrand.FormattingEnabled = true;
-            cboNewBrand.Location = new Point(8, 90);
+            cboNewBrand.Location = new Point(8, 137);
             cboNewBrand.Margin = new Padding(5);
             cboNewBrand.Name = "cboNewBrand";
             cboNewBrand.Size = new Size(353, 25);
@@ -429,7 +550,7 @@ namespace ElCerrojoPresentation.Forms
             // lblNewMarca
             // 
             lblNewMarca.AutoSize = true;
-            lblNewMarca.Location = new Point(21, 73);
+            lblNewMarca.Location = new Point(18, 120);
             lblNewMarca.Margin = new Padding(5);
             lblNewMarca.Name = "lblNewMarca";
             lblNewMarca.Size = new Size(40, 15);
@@ -441,7 +562,7 @@ namespace ElCerrojoPresentation.Forms
             numNewPrice.DecimalPlaces = 2;
             numNewPrice.Font = new Font("Segoe UI", 10F);
             numNewPrice.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
-            numNewPrice.Location = new Point(8, 140);
+            numNewPrice.Location = new Point(8, 189);
             numNewPrice.Margin = new Padding(5);
             numNewPrice.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numNewPrice.Name = "numNewPrice";
@@ -479,7 +600,7 @@ namespace ElCerrojoPresentation.Forms
             // lblNewPrice
             // 
             lblNewPrice.AutoSize = true;
-            lblNewPrice.Location = new Point(21, 123);
+            lblNewPrice.Location = new Point(21, 172);
             lblNewPrice.Margin = new Padding(5);
             lblNewPrice.Name = "lblNewPrice";
             lblNewPrice.Size = new Size(88, 15);
@@ -510,6 +631,8 @@ namespace ElCerrojoPresentation.Forms
             // 
             // tabEdit
             // 
+            tabEdit.Controls.Add(cboEditSupp);
+            tabEdit.Controls.Add(label9);
             tabEdit.Controls.Add(cboEditCateg);
             tabEdit.Controls.Add(label4);
             tabEdit.Controls.Add(numEditStock);
@@ -534,12 +657,33 @@ namespace ElCerrojoPresentation.Forms
             tabEdit.Text = "Editar";
             tabEdit.UseVisualStyleBackColor = true;
             // 
+            // cboEditSupp
+            // 
+            cboEditSupp.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboEditSupp.Font = new Font("Segoe UI", 10F);
+            cboEditSupp.FormattingEnabled = true;
+            cboEditSupp.Location = new Point(9, 92);
+            cboEditSupp.Margin = new Padding(5);
+            cboEditSupp.Name = "cboEditSupp";
+            cboEditSupp.Size = new Size(353, 25);
+            cboEditSupp.TabIndex = 19;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(22, 75);
+            label9.Margin = new Padding(5);
+            label9.Name = "label9";
+            label9.Size = new Size(61, 15);
+            label9.TabIndex = 18;
+            label9.Text = "Proveedor";
+            // 
             // cboEditCateg
             // 
             cboEditCateg.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEditCateg.Font = new Font("Segoe UI", 10F);
             cboEditCateg.FormattingEnabled = true;
-            cboEditCateg.Location = new Point(371, 90);
+            cboEditCateg.Location = new Point(371, 138);
             cboEditCateg.Margin = new Padding(5);
             cboEditCateg.Name = "cboEditCateg";
             cboEditCateg.Size = new Size(353, 25);
@@ -548,7 +692,7 @@ namespace ElCerrojoPresentation.Forms
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(371, 73);
+            label4.Location = new Point(371, 121);
             label4.Margin = new Padding(5);
             label4.Name = "label4";
             label4.Size = new Size(58, 15);
@@ -600,7 +744,7 @@ namespace ElCerrojoPresentation.Forms
             numEditBuyPrice.DecimalPlaces = 2;
             numEditBuyPrice.Font = new Font("Segoe UI", 10F);
             numEditBuyPrice.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
-            numEditBuyPrice.Location = new Point(8, 190);
+            numEditBuyPrice.Location = new Point(278, 190);
             numEditBuyPrice.Margin = new Padding(5);
             numEditBuyPrice.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numEditBuyPrice.Name = "numEditBuyPrice";
@@ -611,7 +755,7 @@ namespace ElCerrojoPresentation.Forms
             // lblEditBuyPrice
             // 
             lblEditBuyPrice.AutoSize = true;
-            lblEditBuyPrice.Location = new Point(21, 173);
+            lblEditBuyPrice.Location = new Point(291, 173);
             lblEditBuyPrice.Margin = new Padding(5);
             lblEditBuyPrice.Name = "lblEditBuyPrice";
             lblEditBuyPrice.Size = new Size(102, 15);
@@ -623,7 +767,7 @@ namespace ElCerrojoPresentation.Forms
             cboEditBrand.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEditBrand.Font = new Font("Segoe UI", 10F);
             cboEditBrand.FormattingEnabled = true;
-            cboEditBrand.Location = new Point(8, 90);
+            cboEditBrand.Location = new Point(8, 138);
             cboEditBrand.Name = "cboEditBrand";
             cboEditBrand.Size = new Size(353, 25);
             cboEditBrand.TabIndex = 3;
@@ -631,7 +775,7 @@ namespace ElCerrojoPresentation.Forms
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(21, 73);
+            label2.Location = new Point(21, 121);
             label2.Name = "label2";
             label2.Size = new Size(40, 15);
             label2.TabIndex = 2;
@@ -642,7 +786,7 @@ namespace ElCerrojoPresentation.Forms
             numEditPrice.DecimalPlaces = 2;
             numEditPrice.Font = new Font("Segoe UI", 10F);
             numEditPrice.Increment = new decimal(new int[] { 1, 0, 0, 131072 });
-            numEditPrice.Location = new Point(8, 140);
+            numEditPrice.Location = new Point(8, 190);
             numEditPrice.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numEditPrice.Name = "numEditPrice";
             numEditPrice.Size = new Size(250, 25);
@@ -679,7 +823,7 @@ namespace ElCerrojoPresentation.Forms
             // lblEditPrice
             // 
             lblEditPrice.AutoSize = true;
-            lblEditPrice.Location = new Point(21, 123);
+            lblEditPrice.Location = new Point(21, 173);
             lblEditPrice.Name = "lblEditPrice";
             lblEditPrice.Size = new Size(88, 15);
             lblEditPrice.TabIndex = 6;
@@ -721,6 +865,21 @@ namespace ElCerrojoPresentation.Forms
             tabControlMain.ResumeLayout(false);
             tabList.ResumeLayout(false);
             tabList.PerformLayout();
+            splitContainer3.Panel1.ResumeLayout(false);
+            splitContainer3.Panel2.ResumeLayout(false);
+            splitContainer3.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
+            splitContainer3.ResumeLayout(false);
+            splitContainer4.Panel1.ResumeLayout(false);
+            splitContainer4.Panel1.PerformLayout();
+            splitContainer4.Panel2.ResumeLayout(false);
+            splitContainer4.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer4).EndInit();
+            splitContainer4.ResumeLayout(false);
+            splitContainer2.Panel1.ResumeLayout(false);
+            splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)splitContainer2).EndInit();
+            splitContainer2.ResumeLayout(false);
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
@@ -793,5 +952,14 @@ namespace ElCerrojoPresentation.Forms
         private TextBox txbEditName;
         private Label lblEditName;
         private SplitContainer splitContainer1;
+        private Label label7;
+        private ComboBox cboListSupp;
+        private SplitContainer splitContainer2;
+        private SplitContainer splitContainer3;
+        private SplitContainer splitContainer4;
+        private ComboBox cboNewSupp;
+        private Label label8;
+        private ComboBox cboEditSupp;
+        private Label label9;
     }
 }

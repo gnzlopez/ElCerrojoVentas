@@ -8,6 +8,7 @@ using ElCerrojoServices.Interfaces;
 using System.Data;
 using System.Numerics;
 using System.Windows.Forms;
+using static ElCerrojoPresentation.Utils.UiTheme;
 
 namespace ElCerrojoPresentation.Forms
 {
@@ -16,19 +17,19 @@ namespace ElCerrojoPresentation.Forms
         private IProductService _productService;
         private IBrandService _brandService;
         private ICategoryService _categoryService;
+        private ISupplierService _supplierService;
         private ProductVM selectedProd;
 
-        public frmProducto(IProductService productService, IBrandService brandService, ICategoryService categoryService)
+        public frmProducto(IProductService productService, IBrandService brandService, ICategoryService categoryService, ISupplierService supplierService)
         {
             InitializeComponent();
             _productService = productService;
             _brandService = brandService;
             _categoryService = categoryService;
-
+            _supplierService = supplierService;
 
             dgvProductList.EditMode = DataGridViewEditMode.EditOnEnter;
 
-            dgvProductList.CellContentClick += dgvProductList_CellContentClick;
             dgvProductList.CurrentCellDirtyStateChanged += dgvProductList_CurrentCellDirtyStateChanged;
             dgvProductList.CellValueChanged += dgvProductList_CellValueChanged;
             dgvProductList.CellClick += dgvProductList_CellClick;
@@ -38,6 +39,7 @@ namespace ElCerrojoPresentation.Forms
                 if (dgvProductList.IsCurrentCellDirty)
                     dgvProductList.CommitEdit(DataGridViewDataErrorContexts.Commit);
             };
+            _supplierService = supplierService;
         }
 
         public void ShowTab(string tabName)
@@ -62,8 +64,9 @@ namespace ElCerrojoPresentation.Forms
             string searchText = txbSearch.Text;
             int? searchBrandId = ((ComboOption)cboListBrand.SelectedItem!) == null ? null : ((ComboOption)cboListBrand.SelectedItem!).Value;
             int? searchCategId = ((ComboOption)cboListCateg.SelectedItem!) == null ? null : ((ComboOption)cboListCateg.SelectedItem!).Value;
+            int? searchSuppId = ((ComboOption)cboListSupp.SelectedItem!) == null ? null : ((ComboOption)cboListSupp.SelectedItem!).Value;
 
-            var productList = await _productService.GetByText(searchText, searchBrandId, searchCategId);
+            var productList = await _productService.GetByText(searchText, searchBrandId, searchCategId, searchSuppId);
 
             var listVM = productList.Select(x => new ProductVM
             {
@@ -73,6 +76,8 @@ namespace ElCerrojoPresentation.Forms
                 CategoryName = x.CategoryName,
                 BrandId = x.BrandId ?? 0,
                 BrandName = x.BrandName,
+                SupplierId = x.SupplierId ?? 0,
+                SupplierName = x.SupplierName,
                 Price = x.Price,
                 BuyPrice = x.BuyPrice,
                 BarCode = x.BarCode ?? "",
@@ -88,6 +93,7 @@ namespace ElCerrojoPresentation.Forms
             dgvProductList.Columns["Id"].Visible = false;
             dgvProductList.Columns["CategoryId"].Visible = false;
             dgvProductList.Columns["BrandId"].Visible = false;
+            dgvProductList.Columns["SupplierId"].Visible = false;
             dgvProductList.Columns["BuyPrice"].Visible = false;
             dgvProductList.Columns["BarCode"].Visible = false;
 
@@ -98,7 +104,10 @@ namespace ElCerrojoPresentation.Forms
             dgvProductList.Columns["Name"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvProductList.Columns["Name"].Width = 250;
 
-            PositionHeaderCheckBox();
+            UiPolish.StyleGrid(dgvProductList);
+
+            _headerCheckBox.Checked = false;
+            //PositionHeaderCheckBox();
         }
 
         private void AddHeaderCheckBox()
@@ -132,6 +141,10 @@ namespace ElCerrojoPresentation.Forms
             AddHeaderCheckBox();
             //dgvProductList.DataSource = new List<ProductVM>();
 
+
+            // Cargo los dropdown
+
+            // Cargo las listas de marcas
             var brandsList = await _brandService.GetByText("");
 
             ComboOption[] brandItems = [new ComboOption() { Value = 0, Text = "Sin Marca" }];
@@ -145,7 +158,9 @@ namespace ElCerrojoPresentation.Forms
             cboListBrand.InsertItems(brandItems);
             cboNewBrand.InsertItems(brandItems);
             cboEditBrand.InsertItems(brandItems);
+            cboListBrand.SelectedIndex = 0;
 
+            // Cargo las listas de categorias
             var categList = await _categoryService.GetByText("");
 
             ComboOption[] categItems = [new ComboOption() { Value = 0, Text = "Sin Categoria" }];
@@ -159,6 +174,23 @@ namespace ElCerrojoPresentation.Forms
             cboListCateg.InsertItems(categItems);
             cboNewCateg.InsertItems(categItems);
             cboEditCateg.InsertItems(categItems);
+            cboListCateg.SelectedIndex = 0;
+
+            // Cargo las listas de proveedoress
+            var suppList = await _supplierService.GetByText("");
+
+            ComboOption[] suppItems = [new ComboOption() { Value = 0, Text = "Sin Proveedor" }];
+
+            suppItems =
+            [
+                .. suppItems,
+                .. suppList.Select(x => new ComboOption { Text = $"{x.Name}", Value = x.Id })
+            ];
+
+            cboListSupp.InsertItems(suppItems);
+            cboNewSupp.InsertItems(suppItems);
+            cboEditSupp.InsertItems(suppItems);
+            cboListSupp.SelectedIndex = 0;
 
             await ShowProducts();
         }
@@ -173,6 +205,7 @@ namespace ElCerrojoPresentation.Forms
             txbNewName.Text = "";
             cboNewBrand.SelectedIndex = 0;
             cboNewCateg.SelectedIndex = 0;
+            cboNewSupp.SelectedIndex = 0;
             numNewPrice.Value = 0;
             numNewBuyPrice.Value = 0;
             numNewStock.Value = 0;
@@ -195,12 +228,14 @@ namespace ElCerrojoPresentation.Forms
 
             var brandId = ((ComboOption)cboNewBrand.SelectedItem!).Value;
             var categId = ((ComboOption)cboNewCateg.SelectedItem!).Value;
+            var suppId = ((ComboOption)cboNewSupp.SelectedItem!).Value;
 
             var newProduct = new ProductDto
             {
                 Name = txbNewName.Text.Trim(),
                 BrandId = brandId == 0 ? null : brandId,
                 CategoryId = categId == 0 ? null : categId,
+                SupplierId = suppId == 0 ? null : suppId,
                 Price = numNewPrice.Value,
                 BuyPrice = numNewBuyPrice.Value,
                 BarCode = txbNewCode.Text.Trim(),
@@ -223,6 +258,7 @@ namespace ElCerrojoPresentation.Forms
                 txbEditName.Text = selectedProd.Name;
                 cboEditBrand.SetValue(selectedProd.BrandId);
                 cboEditCateg.SetValue(selectedProd.CategoryId);
+                cboEditSupp.SetValue(selectedProd.SupplierId);
                 numEditPrice.Value = selectedProd.Price;
                 numEditBuyPrice.Value = selectedProd.BuyPrice;
                 txbEditCode.Text = selectedProd.BarCode;
@@ -274,6 +310,7 @@ namespace ElCerrojoPresentation.Forms
 
             var brandId = ((ComboOption)cboEditBrand.SelectedItem!).Value;
             var categId = ((ComboOption)cboEditCateg.SelectedItem!).Value;
+            var suppId = ((ComboOption)cboEditSupp.SelectedItem!).Value;
 
             var editProduct = new ProductDto
             {
@@ -281,6 +318,7 @@ namespace ElCerrojoPresentation.Forms
                 Name = txbEditName.Text.Trim(),
                 BrandId = brandId == 0 ? null : brandId,
                 CategoryId = categId == 0 ? null : categId,
+                SupplierId = suppId == 0 ? null : suppId,
                 Price = numEditPrice.Value,
                 BuyPrice = numEditBuyPrice.Value,
                 BarCode = txbEditCode.Text.Trim(),
@@ -326,12 +364,12 @@ namespace ElCerrojoPresentation.Forms
 
         private void dgvProductList_Scroll(object sender, ScrollEventArgs e)
         {
-            PositionHeaderCheckBox();
+            //PositionHeaderCheckBox();
         }
 
         private void dgvProductList_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            PositionHeaderCheckBox();
+            //PositionHeaderCheckBox();
         }
 
         private void HeaderCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -351,6 +389,11 @@ namespace ElCerrojoPresentation.Forms
         }
 
         private async void cboListCateg_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            await ShowProducts();
+        }
+
+        private async void cboListProv_SelectedIndexChanged(object sender, EventArgs e)
         {
             await ShowProducts();
         }
@@ -378,7 +421,7 @@ namespace ElCerrojoPresentation.Forms
 
         private void dgvProductList_SizeChanged(object sender, EventArgs e)
         {
-            PositionHeaderCheckBox();
+            //PositionHeaderCheckBox();
         }
 
         private void dgvProductList_CurrentCellDirtyStateChanged(object sender, EventArgs e)
@@ -421,7 +464,6 @@ namespace ElCerrojoPresentation.Forms
             }
 
             await ShowProducts();
-            _headerCheckBox.Checked = false;
         }
 
         private void splitContainer1_Resize(object sender, EventArgs e)

@@ -80,9 +80,9 @@ namespace ElCerrojoServices.Implementation
             return _mapper.Map<ProductDto>(entity);
         }
 
-        public async Task<List<ProductDto>> GetByText(string searchText, int? brandId = null, int? categId = null)
+        public async Task<List<ProductDto>> GetByText(string searchText, int? brandId = null, int? categId = null, int? suppId = null)
         {
-            var entities = await _productRepo.GetByText(searchText, brandId, categId);
+            var entities = await _productRepo.GetByText(searchText, brandId, categId, suppId);
             return _mapper.Map<List<ProductDto>>(entities);
         }
 

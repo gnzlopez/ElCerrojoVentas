@@ -10,7 +10,7 @@ namespace ElCerrojoRepository.Interfaces
         Task<List<Product>> GetAll();
         Task<Product?> GetById(int id);
         Task<Product?> GetByCode(string productCode);
-        Task<List<Product>> GetByText(string searchText, int? brandId = null, int? categId = null);
+        Task<List<Product>> GetByText(string searchText, int? brandId = null, int? categId = null, int? suppId = null);
         Task AddList(List<Product> products);
         Task ImportExcel(IEnumerable<Product> products);
         Task UpdatePrices(IReadOnlyCollection<int> ids, decimal multiplier);

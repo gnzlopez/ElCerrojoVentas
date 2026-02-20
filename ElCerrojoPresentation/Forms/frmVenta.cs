@@ -49,6 +49,8 @@ namespace ElCerrojoPresentation.Forms
 
         private async Task AddProduct(string prodCode)
         {
+            // 1. Busco producto por codigo.
+            // Si no se encuentra indico en rojo
             var prod = await _productService.GetByCode(prodCode);
             if (prod == null || prod.Id < 1)
             {
@@ -58,6 +60,7 @@ namespace ElCerrojoPresentation.Forms
 
             txbSaleProd.BackColor = SystemColors.Window;
 
+            // Llamo al Popup de cantidad
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(prod.Name);
             sb.AppendLine("Marca: " + prod.BrandName);
@@ -80,8 +83,10 @@ namespace ElCerrojoPresentation.Forms
                 return;
             }
 
+            // Busco si el producto ya fue agregado a la lista 
             var find = _saleDetail.FirstOrDefault(x => x.Id == prod.Id);
 
+            // Si no se agrego, lo agrego si no sumo la cantidad ingresada a la ingresada previamente
             if (find == null)
             {
                 decimal totalPrice = qty * prod.Price;
@@ -100,11 +105,12 @@ namespace ElCerrojoPresentation.Forms
                 int index = _saleDetail.IndexOf(find);
                 int totalQty = find.Quantity + qty;
 
-                if (totalQty > prod.Stock)
-                {
-                    MessageBox.Show("La cantidad ingresada no puede ser mayor que el stock disponible");
-                    return;
-                }
+                //Por ahora no valido el stock
+                //if (totalQty > prod.Stock)
+                //{
+                //    MessageBox.Show("La cantidad ingresada no puede ser mayor que el stock disponible");
+                //    return;
+                //}
 
                 decimal totalPrice = totalQty * prod.Price;
 
@@ -142,6 +148,8 @@ namespace ElCerrojoPresentation.Forms
                 await AddProduct(selectedProd.BarCode);
                 UpdateChange();
             }
+
+            txbSaleProd.Focus();
         }
 
         private void dgvSaleDetail_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -156,6 +164,8 @@ namespace ElCerrojoPresentation.Forms
                 decimal saleTotal = _saleDetail.Sum(x => x.TotalPrice);
                 lblTotal.Text = saleTotal.ToString("0.00");
                 UpdateChange();
+
+                txbSaleProd.Focus();
             }
         }
 
@@ -268,8 +278,6 @@ namespace ElCerrojoPresentation.Forms
                     }
                 }
             }
-
-            txbSaleProd.Focus();
         }
     }
 }
